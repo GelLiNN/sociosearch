@@ -1,18 +1,27 @@
 {
-  "name": "node-socio-server",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/start"
-  },
-  "dependencies": {
-    "body-parser": "~1.17.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2",
-    "forever": "~0.15.3"
-  }
+    "name": "node-socio-server",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/start"
+    },
+    "dependencies": {
+        "body-parser": "~1.17.1",
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.3",
+        "express": "~4.15.2",
+        "connect-flash": "*",
+        "express-messages": "*",
+        "express-session": "*",
+        "express-validator": "*",
+        "jade": "~1.11.0",
+        "morgan": "~1.8.1",
+        "serve-favicon": "~2.4.2",
+        "forever": "~0.15.3",
+        "lokijs": "*",
+        "bcryptjs": "*",
+        "passport": "*",
+        "passport-http": "*",
+        "passport-local": "*"
+    }
 }
