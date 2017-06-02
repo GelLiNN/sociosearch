@@ -27,12 +27,12 @@ body {
 * CARD
 **/
 .card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%) translateZ(0);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   width: 370px;
   background-color: #fff;
+  border-radius: 3px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -51,10 +51,8 @@ body {
 .card__thumb {
   height: 245px;
   overflow: hidden;
-}
-.card__thumb img {
-  display: block;
-  opacity: 1;
+  background-image: url("../assets/computercard.png");
+  background-size: cover;
 }
 
 form {
@@ -93,16 +91,6 @@ form input:focus {
   color: #53e3a6;
 }
 
-#computercard {
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  position: absolute;
-  overflow: hidden;
-  height: 245px;
-  display: block;
-}
-
 /**
 * BODY
 **/
@@ -138,10 +126,10 @@ form input:focus {
   text-transform: uppercase;
 }
 
-.btn {
+.sociobtn {
   border-radius: 5px;
   padding: 10px 65px;
-  font-size: 22px;
+  font-size: 24px;
   text-decoration: none;
   margin: auto;
   color: white;
@@ -149,7 +137,7 @@ form input:focus {
   display: inline-block;
 }
 
-.btn:active {
+.sociobtn:active {
   transform: translate(0px, 5px);
   -webkit-transform: translate(0px, 5px);
   box-shadow: 0px 1px 0px 0px;
@@ -188,4 +176,12 @@ form input:focus {
 }
 .icon + .icon {
   padding-left: 10px;
+}
+
+/*
+* Bootstrap modifications
+*/
+
+footer {
+    margin-top: 40px;
 }
