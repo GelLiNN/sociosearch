@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+/* About */
+router.get('/about', function(req, res) {
+    res.render('about');
+});
+
 /* Register */
 router.get('/register', function(req, res) {
     res.render('register');
