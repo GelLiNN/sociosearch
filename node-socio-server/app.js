@@ -14,15 +14,19 @@ var localStrategy = require('passport-local').Strategy;
 // Initialize LokiJS Database
 var loki = require('lokijs');
 var db = new loki('sociosearch.db');
-// Add a collection to the database
-var users = db.addCollection('users');
-// Add some documents to the collection
-users.insert({ email : 'chikn42@gmail.com', password: '890p890p' });
-console.log(users.find({ 'email': 'chikn42@gmail.com' }));
+// Add a collection to the db, save db
+var userCollection = db.addCollection('users');
+db.saveDatabase(function(err) {
+  if (err) {
+    console.log("error : " + err);
+  }
+  else {
+    console.log("database saved!");
+  }
+});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup

@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var User = require('../models/user');
+
 /* About */
 router.get('/about', function(req, res) {
     res.render('about');
@@ -29,7 +31,13 @@ router.post('/register', function(req, res) {
             errors:errors
         });
     } else {
-        console.log('successful');
+        var newUser = new User(name, email, password);
+        User.createUser(newUser, function(err, user) {
+            if (err) throw err;
+            console.log('successful new user:\n' + user);
+        });
+        req.flash('success_msg', 'Thank you ' + name + ' for registering with SocioSearch!');
+        res.redirect('/users/login');
     }
     console.log(name);
 });
