@@ -17,12 +17,11 @@ var db = new loki('sociosearch.db');
 // Add a collection to the db, save db
 var userCollection = db.addCollection('users');
 db.saveDatabase(function(err) {
-  if (err) {
-    console.log("error : " + err);
-  }
-  else {
-    console.log("database saved!");
-  }
+    if (err) {
+        console.log("error : " + err);
+    } else {
+        console.log("database saved!");
+    }
 });
 
 var routes = require('./routes/index');
@@ -77,6 +76,8 @@ app.use(function (req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    // for access to the user anywhere on Node server
+    res.locals.user = req.user || null;
     next();
 });
 

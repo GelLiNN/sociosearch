@@ -1,14 +1,14 @@
 <div class="card">
-    <header class="card__thumb">
-         <div id="formbox">
-            <form class="form">
-                <input type="text" placeholder="email">
-                <input type="password" placeholder="password">
-            </form>
-        </div>
-    </header>
+    <form class="form" method="post" action="/users/login">
+        <header class="card__thumb">
+            <div id="formbox">
+                <input type="text" name="email" placeholder="email">
+                <input type="password" name="password" placeholder="password">
+            </div>
+        </header>
 
-    <div class="card__body">
-        <a href="" class="sociobtn gold">LOGIN</a>
-    </div>
+        <div class="card__body">
+            <button type="submit" class="sociobtn gold">LOGIN</button>
+        </div>
+    </form>
 </div>

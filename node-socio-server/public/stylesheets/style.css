@@ -41,22 +41,24 @@ body {
   text-decoration: none;
 }
 
-.card:hover {
+.card:hover, .sociobtn:hover {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  transition-duration: .3s;
 }
 
 /**
-* THUMB
+* LOGIN THUMB
 **/
 .card__thumb {
   height: 245px;
+  padding-top: 20%;
   overflow: hidden;
   background-image: url("../assets/computercard.png");
   background-size: cover;
 }
 
 form {
-  padding: 90px 0;
+  padding: 0px;
   position: relative;
   z-index: 2;
 }
@@ -128,6 +130,7 @@ form input:focus {
 
 .sociobtn {
   border-radius: 5px;
+  border-style: none;
   padding: 10px 65px;
   font-size: 24px;
   text-decoration: none;
