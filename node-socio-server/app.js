@@ -14,13 +14,14 @@ var localStrategy = require('passport-local').Strategy;
 // Initialize LokiJS Database
 var loki = require('lokijs');
 var db = new loki('sociosearch.db');
-// Add a collection to the db, save db
-var userCollection = db.addCollection('users');
-db.saveDatabase(function(err) {
+// Load the db from file system
+db.loadDatabase({}, function(err) {
     if (err) {
-        console.log("error : " + err);
+        console.log('error : ' + err);
     } else {
-        console.log("database saved!");
+        console.log('SocioSearch database loaded!');
+        var loadedUsers = db.getCollection('users').name;
+        console.log('Collection: ' + loadedUsers);
     }
 });
 

@@ -41,12 +41,15 @@ router.post('/register', function(req, res) {
             errors:errors
         });
     } else {
+        /* UNCOMMENT TO ENABLE REGISTRATION
         var newUser = new User(name, email, password);
         User.createUser(newUser, function(err, user) {
             if (err) throw err;
             console.log('successful new user: ' + user.email);
         });
         req.flash('success_msg', 'Thank you ' + name + ' for registering with SocioSearch!');
+        */
+        req.flash('error_msg', 'Registration is currently disabled for SocioSearch');
         res.redirect('/users/login');
     }
 });
@@ -151,7 +154,6 @@ router.post('/search', function(req, res) {
     client.get('search/tweets',
         {q: query, result_type: 'popular', count: 100},
         function(error, tweets, response) {
-            //var tweetsTrimmed = tweets.statuses;
             console.log(tweets);
             // pass a local variable to the view
             res.render('search', {tweetsForClient: tweets.statuses});
