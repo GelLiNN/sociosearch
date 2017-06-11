@@ -195,6 +195,7 @@ form input:focus {
     list-style-type: none;
     position: relative;
 }
+
 .searchbar li a {
     font-size: 16px;
     color: white;
@@ -203,9 +204,9 @@ form input:focus {
     padding: 0 26px;
     text-decoration: none;
     border-left: 1px solid #2e2e2e;
-    font-family: Montserrat, sans-serif;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
+
 .searchbar li a:hover {
     background-color: #2e2e2e;
 }
@@ -216,16 +217,19 @@ form input:focus {
     font-size: 10px;
     line-height: 24px;
 }
+
 #search {
     width: 357px;
     margin: 4px;
 }
+
 #search_text{
     width: 297px;
     padding: 15px 0 15px 20px;
     font-size: 16px;
     font-family: Montserrat, sans-serif;
     border: 0 none;
+    border-radius: 0px;
     height: 52px;
     margin-right: 0;
     color: white;
@@ -235,6 +239,7 @@ form input:focus {
     box-sizing: border-box;
     transition: all 0.15s;
 }
+
 ::-webkit-input-placeholder { /* WebKit browsers */
     color: white;
 }
@@ -247,12 +252,15 @@ form input:focus {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color: white;
 }
+
 #search_text:focus {
     background: rgb(64, 151, 119);
 }
+
 #search_button {
     border: 0 none;
-    background: #1f7f5c url(search.png) center no-repeat;
+    border-radius: 0px;
+    background: #1f7f5c url('../assets/search.png') center no-repeat;
     width: 60px;
     float: left;
     padding: 0;
@@ -260,18 +268,22 @@ form input:focus {
     height: 52px;
     cursor: pointer;
 }
-#options a{
+
+#search_options a {
     border-left: 0 none;
 }
-#options > a {
-    background-image: url(triangle.png);
+
+#search_options > a {
+    background-image: url('../assets/triangle.png');
     background-position: 85% center;
     background-repeat: no-repeat;
     padding-right: 42px;
 }
+
 .subnav {
     visibility: hidden;
     position: absolute;
+    padding-left: 0px;
     top: 110%;
     right: 0;
     width: 200px;
@@ -280,21 +292,24 @@ form input:focus {
     transition: all 0.1s;
     background: #232323;
 }
+
 .subnav li {
     float: none;
 }
+
 .subnav li a {
     border-bottom: 1px solid #2e2e2e;
 }
-#options:hover .subnav {
+
+#search_options:hover .subnav {
     visibility: visible;
     top: 100%;
     opacity: 1;
 }
+
 /*
 * Bootstrap modifications
 */
-
 footer {
     margin-top: 40px;
 }

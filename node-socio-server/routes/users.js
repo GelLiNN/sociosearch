@@ -5,6 +5,10 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
+// Twitter API variables to avoid reconnecting during nav
+var Twitter = null;
+var client = null;
+
 /*
 * About Routes
 */
@@ -115,8 +119,44 @@ router.get('/logout', function(req, res) {
 /*
 * Search Routes
 */
-router.get('/search', function(req, res) {
+router.get('/search', ensureLoggedIn, function(req, res) {
+    // Twitter client will connect when client is logged in, on Search Page
+    Twitter = require('twitter');
+    client = new Twitter({
+          consumer_key: 'm3USj4URYqfbkhOuiBaf2zzhY',
+          consumer_secret: 'qdlQ5LV0nAhVS09BH9lfV8PTUtaZm2zT4kAvoSfCa3U6jOTY2s',
+          access_token_key: '1201654596-OVxltygt0tv4vxWekr4RK7o0cJlNXkCtEBtN0i2',
+          access_token_secret: 'WYPNP46Z3mWTAZyfr7qZ1IlEApQKWbbTgYUb9UMKCX9hH'
+    });
     res.render('search');
 });
+
+/* COPY
+Function to ensure content blocked for those not logged in */
+function ensureLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        req.flash('error_msg', 'You are not Logged in!');
+        res.redirect('/users/login');
+    }
+}
+
+// POST because we will be storing User searches in DB
+router.post('/search', function(req, res) {
+    var query = req.body.search_text;
+    // Other filter and request params will be added here
+    // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
+
+    client.get('search/tweets',
+        {q: query, result_type: 'popular', count: 100},
+        function(error, tweets, response) {
+            //var tweetsTrimmed = tweets.statuses;
+            console.log(tweets);
+            // pass a local variable to the view
+            res.render('search', {tweetsForClient: tweets.statuses});
+        });
+});
+
 
 module.exports = router;

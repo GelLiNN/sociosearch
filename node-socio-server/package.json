@@ -22,6 +22,7 @@
         "bcryptjs": "*",
         "passport": "*",
         "passport-http": "*",
-        "passport-local": "*"
+        "passport-local": "*",
+        "twitter": "*"
     }
 }
