@@ -240,16 +240,16 @@ form input:focus {
     transition: all 0.15s;
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
+#search_text::-webkit-input-placeholder { /* WebKit browsers */
     color: white;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+#search_text:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: white;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+#search_text::-moz-placeholder { /* Mozilla Firefox 19+ */
     color: white;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
+#search_text:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: white;
 }
 
