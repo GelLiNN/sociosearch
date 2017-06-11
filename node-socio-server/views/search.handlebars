@@ -1,36 +1,30 @@
 <h2 class="page-header">Search</h2>
 <p>Enter a search term, and see just how buzzing the topic is on Social Media!</p>
-<div class="input-group" id="adv-search">
-    <input type="text" class="form-control" placeholder="Search for snippets" />
-    <div class="input-group-btn">
-        <div class="btn-group" role="group">
-            <div class="dropdown dropdown-lg">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label for="filter">Filter by</label>
-                        <select class="form-control">
-                            <option value="0" selected>All Snippets</option>
-                            <option value="1">Featured</option>
-                            <option value="2">Most popular</option>
-                            <option value="3">Top rated</option>
-                            <option value="4">Most commented</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="contain">Author</label>
-                        <input class="form-control" type="text" />
-                      </div>
-                      <div class="form-group">
-                        <label for="contain">Contains the words</label>
-                        <input class="form-control" type="text" />
-                      </div>
-                      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </form>
-                </div>
-            </div>
-            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-        </div>
-    </div>
-</div>
+<ul class="searchbar">
+    <li id="settings">
+        <a href="#"><img src="settings.png" /></a>
+    </li>
+    <li>
+        <a href="#">Application</a>
+    </li>
+    <li>
+        <a href="#">Board</a>
+    </li>
+    <li id="search">
+        <form action="" method="get">
+            <input type="text" name="search_text" id="search_text" placeholder="Search"/>
+            <input type="button" name="search_button" id="search_button"></a>
+        </form>
+    </li>
+    <li id="options">
+        <a href="#">Options</a>
+        <ul class="subnav">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Application</a></li>
+            <li><a href="#">Board</a></li>
+            <li><a href="#">Options</a></li>
+        </ul>
+    </li>
+</ul>
+
+<script src="prefixfree-1.0.7.js" type="text/javascript"></script>
