@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Sociosearch</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <link rel='stylesheet' href='/stylesheets/style.css' />
         <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
@@ -19,10 +20,13 @@
                 <!-- Smart NAV for when user is logged in -->
                 {{#if user}}
                     <li role="presentation"><a href="/">Dashboard</a></li>
+                    <li role="presentation"><a href="/users/search">Search</a></li>
+                    <li role="presentation"><a href="/users/about">About</a></li>
                     <li role="presentation"><a href="/users/logout">Logout</a></li>
                 {{else}}
                     <li role="presentation"><a href="/users/login">Login</a></li>
                     <li role="presentation"><a href="/users/register">Register</a></li>
+                    <li role="presentation"><a href="/users/about">About</a></li>
                 {{/if}}
               </ul>
             </nav>
