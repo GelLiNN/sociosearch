@@ -1,10 +1,78 @@
 /*
-* Navbar
+* SocioSearch Navbar
 */
+.navbar-custom {
+  background-color: #465060;
+}
+.navbar-custom .navbar-brand {
+  color: #f0eded;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+  color: #ffffff;
+}
+.navbar-custom .navbar-text {
+  color: #f0eded;
+}
+.navbar-custom .navbar-nav > li > a {
+  color: #f0eded;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  color: #ffffff;
+  background-color: #8d8d8d;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #707070;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #707070;
+}
+.navbar-custom .navbar-toggle {
+  border-color: #707070;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #707070;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #f0eded;
+}
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+  border-color: #f0eded;
+}
+.navbar-custom .navbar-link {
+  color: #f0eded;
+}
+.navbar-custom .navbar-link:hover {
+  color: #ffffff;
+}
 
+@media (max-width: 767px) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #f0eded;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #707070;
+  }
+}
 
 /*
-* For Login Page
+* Login Page Styles
 */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 * {
@@ -17,9 +85,6 @@ body {
   background-color: #577596;
 }
 
-/**
-* Title
-**/
 .title {
   text-align: center;
   transform: translateY(20px);
@@ -28,9 +93,6 @@ body {
   text-transform: uppercase;
 }
 
-/**
-* CARD
-**/
 .card {
   margin-left: auto;
   margin-right: auto;
@@ -98,9 +160,6 @@ form input:focus {
   color: #53e3a6;
 }
 
-/**
-* BODY
-**/
 .card__body {
   position: relative;
   height: 145px;
@@ -187,15 +246,24 @@ form input:focus {
 }
 
 /*
-* Search Page
+* Search Page Styles
 */
+#blurb {
+    text-align: center;
+    font-style: italic;
+    font-size: 14pt;
+}
+
 .searchbar {
+    clear: both;
     background: #232323;
     height: 60px;
+    width: 100%;
     display: inline-block;
 }
 
 .searchbar li {
+    height: 60px;
     float: left;
     list-style-type: none;
     position: relative;
@@ -208,7 +276,7 @@ form input:focus {
     line-height: 60px;
     padding: 0 26px;
     text-decoration: none;
-    border-left: 1px solid #2e2e2e;
+    border-left: 2px solid #2e2e2e;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
@@ -218,7 +286,7 @@ form input:focus {
 
 #settings a {
     padding: 18px;
-    height: 24px;
+    height: 60px;
     font-size: 10px;
     line-height: 24px;
 }
@@ -239,7 +307,7 @@ form input:focus {
     margin-right: 0;
     color: white;
     outline: none;
-    background: #1f7f5c;
+    background-color: #4484ce;
     float: left;
     box-sizing: border-box;
     transition: all 0.15s;
@@ -259,13 +327,13 @@ form input:focus {
 }
 
 #search_text:focus {
-    background: rgb(64, 151, 119);
+    background-color: #3b71c6;
 }
 
 #search_button {
     border: 0 none;
     border-radius: 0px;
-    background: #1f7f5c url('../assets/search.png') center no-repeat;
+    background: #4484ce url('../assets/search.png') center no-repeat;
     width: 60px;
     float: left;
     padding: 0;
@@ -312,8 +380,12 @@ form input:focus {
     opacity: 1;
 }
 
+#search-result {
+    height: 250px;
+}
+
 /*
-* About Page including image links
+* About Page Styles
 */
 .image-bg-fluid-height,
 .image-bg-fixed-height {
@@ -371,8 +443,29 @@ footer {
 }
 
 /*
-* Bootstrap modifications
+* Bootstrap Modifications
 */
-footer {
-    margin-top: 40px;
+#main-content {
+    background-color: #e3e7ed;
+    box-shadow: 0px 0px 15px black;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 50px;
+}
+
+#sociosearch-footer {
+    height: 50px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin: 0px;
+    padding-top: 1.5rem;
+    background-color: #efefef;
+    text-align: center;
 }
