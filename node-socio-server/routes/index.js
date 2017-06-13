@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET main dashboard page for this user. */
 router.get('/', ensureLoggedIn, function(req, res) {
-    res.render('index');
+    res.render('dashboard');
 });
 
 /* Function to ensure content blocked for those not logged in */
