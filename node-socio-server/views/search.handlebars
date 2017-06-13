@@ -1,5 +1,9 @@
-<h2 class="page-header">Search</h2>
-<p>Enter a search term, and see just how buzzing the topic is on Social Media!</p>
+
+
+<h2 class="page-header" id="blurb">Enter a search term, and see just how buzzing the topic is on Social Media!</h2>
+
+
+<!-- Search Form -->
 <form method="post" action="/users/search">
     <ul class="searchbar">
         <li id="settings">
@@ -25,7 +29,7 @@
 </form>
 <div class="row" id="thumbnail-results">
     {{#each tweetsForClient}}
-        <div class="col-lg-4">
+        <div class="col-md-3" id="search-result">
           <h2>{{this.user.name}}</h2>
           <p>{{this.text}}</p>
           <p><a class="btn btn-primary" href="" role="button">View details &raquo;</a></p>
