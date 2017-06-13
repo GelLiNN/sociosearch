@@ -448,6 +448,7 @@ footer {
 #main-content {
     background-color: #e3e7ed;
     box-shadow: 0px 0px 15px black;
+    padding-bottom: 15px;
 }
 
 html {

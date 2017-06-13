@@ -23,6 +23,7 @@
         "passport": "*",
         "passport-http": "*",
         "passport-local": "*",
-        "twitter": "*"
+        "twitter": "*",
+        "google-trends-api": "*"
     }
 }

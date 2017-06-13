@@ -1,7 +1,5 @@
-
-
+<!--Search Page for SocioSearch -->
 <h2 class="page-header" id="blurb">Enter a search term, and see just how buzzing the topic is on Social Media!</h2>
-
 
 <!-- Search Form -->
 <form method="post" action="/users/search">
@@ -33,6 +31,13 @@
           <h2>{{this.user.name}}</h2>
           <p>{{this.text}}</p>
           <p><a class="btn btn-primary" href="" role="button">View details &raquo;</a></p>
+        </div>
+    {{/each}}
+
+    {{#each googleTrends}}
+        <div class="col-md-2" id="search-result">
+          <h2>{{this.formattedTime}}</h2>
+          <p>Rank {{this.value}}</p>
         </div>
     {{/each}}
 </div>

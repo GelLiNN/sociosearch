@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var request = require('request');
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
-// Twitter API variables to avoid reconnecting during nav
+// Certain API variables to avoid reconnecting
 var Twitter = null;
-var client = null;
+var twitterClient = null;
+var googleTrends = require('google-trends-api');
 
 /*
 * About Routes
@@ -70,18 +72,6 @@ passport.deserializeUser(function(packet, cb) {
     cb(null,JSON.parse(packet));
 });
 
-/* Correct serialization using IDs instead of user packet
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.getUserById(id, function(user) {
-        done(err, user);
-    });
-});
-*/
-
 // Passport strategy for Login, using email as username
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -125,7 +115,7 @@ router.get('/logout', function(req, res) {
 router.get('/search', ensureLoggedIn, function(req, res) {
     // Twitter client will connect when client is logged in, on Search Page
     Twitter = require('twitter');
-    client = new Twitter({
+    twitterClient = new Twitter({
           consumer_key: 'm3USj4URYqfbkhOuiBaf2zzhY',
           consumer_secret: 'qdlQ5LV0nAhVS09BH9lfV8PTUtaZm2zT4kAvoSfCa3U6jOTY2s',
           access_token_key: '1201654596-OVxltygt0tv4vxWekr4RK7o0cJlNXkCtEBtN0i2',
@@ -151,12 +141,21 @@ router.post('/search', function(req, res) {
     // Other filter and request params will be added here
     // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
 
-    client.get('search/tweets',
+    twitterClient.get('search/tweets',
         {q: query, result_type: 'popular', count: 100},
         function(error, tweets, response) {
-            console.log(tweets);
-            // pass a local variable to the view
-            res.render('search', {tweetsForClient: tweets.statuses});
+
+            googleTrends.interestOverTime({keyword: query})
+                .then(function(results){
+                    var arr = JSON.parse(results);
+                    // pass local variables to the view for rendering
+                    res.render('search', {
+                        tweetsForClient: tweets.statuses,
+                        googleTrends: arr.default.timelineData
+                    });
+                }).catch(function(err){
+                    console.error(err);
+                });
         });
 });
 
