@@ -137,7 +137,9 @@ function ensureLoggedIn(req, res, next) {
 
 // POST because we will be storing User searches in DB
 router.post('/search', function(req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
     var query = req.body.search_text;
+    console.log(query);
     // Other filter and request params will be added here
     // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
 
@@ -149,7 +151,7 @@ router.post('/search', function(req, res) {
                 .then(function(results){
                     var arr = JSON.parse(results);
                     // pass local variables to the view for rendering
-                    res.render('search', {
+                    res.send({
                         tweetsForClient: tweets.statuses,
                         googleTrends: arr.default.timelineData
                     });

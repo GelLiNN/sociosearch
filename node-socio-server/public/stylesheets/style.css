@@ -380,6 +380,12 @@ form input:focus {
     opacity: 1;
 }
 
+#trendsChart {
+    background-color: #272727;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
 #search-result {
     height: 250px;
 }
