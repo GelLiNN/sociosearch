@@ -144,7 +144,7 @@ router.post('/search', function(req, res) {
     // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
 
     twitterClient.get('search/tweets',
-        {q: query, result_type: 'popular', count: 100},
+        {q: query, result_type: 'popular', count: '100'},
         function(error, tweets, response) {
 
             googleTrends.interestOverTime({keyword: query})

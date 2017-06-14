@@ -10,11 +10,7 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
-body {
-    margin-top: 50px;
-    margin-left: 0px;
-    margin-right: 0px;
-}
+
 article,
 aside,
 details,
@@ -1084,13 +1080,7 @@ html {
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
-}
+
 input,
 button,
 select,
@@ -2551,7 +2541,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 100% !important;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
