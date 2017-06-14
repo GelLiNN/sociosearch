@@ -12,7 +12,7 @@ $(document).ready(function () {
 /* Send Search Request to server for results */
 function sendRequest() {
     var text = $("#search_text").val();
-    console.log('hi text ' + text);
+    $("#search-loading").show();
     var options = JSON.stringify({ search_text: text });
     $.ajax({
         type: 'POST',
@@ -20,8 +20,8 @@ function sendRequest() {
         contentType: 'application/JSON',
         url: "/users/search"
     }).done(function(data) {
+        $("#search-loading").hide();
         var tweetResults = $('#thumbnail-results');
-
         var chartData = [];
         $(data.googleTrends).each(function(index, value) {
             chartData.push({"date": new Date(value.formattedAxisTime), "value": value.formattedValue[0]});
@@ -46,4 +46,12 @@ function sendRequest() {
         });
         tweetResults.html(html);
     });
+}
+
+/* Support for enter key for searching */
+function inputKeyUp(e) {
+    e.which = e.which || e.keyCode;
+    if (e.which == 13) {
+        sendRequest();
+    }
 }

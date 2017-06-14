@@ -3,6 +3,7 @@
 */
 .navbar-custom {
   background-color: #465060;
+  box-shadow: 0px 0px 10px #353738;
 }
 .navbar-custom .navbar-brand {
   color: #f0eded;
@@ -98,7 +99,7 @@ body {
   margin-right: auto;
   margin-top: 20px;
   width: 370px;
-  background-color: #fff;
+  background-color: #2999b2;
   border-radius: 3px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -109,7 +110,7 @@ body {
 }
 
 .card:hover, .sociobtn:hover {
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
   transition-duration: .3s;
 }
 
@@ -161,12 +162,12 @@ form input:focus {
 }
 
 .card__body {
+  display: table-cell;
+  vertical-align: middle;
   position: relative;
   height: 145px;
-  width: 65%;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
+  width: 370px;
+  color: #d6d6d6;
 }
 
 .card__category {
@@ -198,15 +199,14 @@ form input:focus {
   padding: 10px 65px;
   font-size: 24px;
   text-decoration: none;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   color: white;
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .sociobtn:active {
-  transform: translate(0px, 5px);
-  -webkit-transform: translate(0px, 5px);
   box-shadow: 0px 1px 0px 0px;
 }
 
@@ -380,6 +380,42 @@ form input:focus {
     opacity: 1;
 }
 
+/* Loading */
+.load-bar {
+  display: none;
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 15px;
+  background-color: #fdba2c;
+}
+.bar {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 50%;
+  text-align: center;
+}
+.bar:nth-child(1) {
+  background-color: #da4733;
+  animation: loading 3s linear infinite;
+}
+.bar:nth-child(2) {
+  background-color: #3b78e7;
+  animation: loading 3s linear 1s infinite;
+}
+.bar:nth-child(3) {
+  background-color: #fdba2c;
+  animation: loading 3s linear 2s infinite;
+}
+@keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+}
+
 #trendsChart {
     background-color: #272727;
     padding-top: 10px;
@@ -461,9 +497,33 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 body {
-    /* Margin bottom by footer height */
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
     margin-bottom: 50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background:
+        linear-gradient(45deg,
+        rgba(255,255,255,0) 48%,
+        rgba(255,255,255,.05) 50%,
+        rgba(255,255,255,0) 52%),
+        linear-gradient(-45deg,
+        rgba(255,255,255,0) 48%,
+        rgba(255,255,255,.05) 50%,
+        rgba(255,255,255,0) 52%);
+    background-size: 1em 1em;
+    background-color: #616f87;
+}
+
+.well {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #sociosearch-footer {
@@ -473,6 +533,7 @@ body {
     bottom: 0;
     margin: 0px;
     padding-top: 1.5rem;
-    background-color: #efefef;
+    background-color: #465060;
+    color: #f0edeb;
     text-align: center;
 }

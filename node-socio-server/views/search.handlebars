@@ -10,8 +10,8 @@
         <a href="#">Search Types</a>
     </li>
     <li id="search">
-        <input type="text" name="search_text" id="search_text" placeholder="Search"/>
-        <button name="search_button" id="search_button" onclick="sendRequest()" />
+        <input type="text" name="search_text" id="search_text" placeholder="Search" onkeyup="inputKeyUp(event)"/>
+        <button name="search_button" id="search_button" onclick="sendRequest()"/>
     </li>
     <li id="search_options">
         <a href="#">Filters</a>
@@ -23,6 +23,12 @@
         </ul>
     </li>
 </ul>
+
+<div class="load-bar" id="search-loading">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
 
 <div id="trendsChart"></div>
 <div class="row" id="thumbnail-results"></div>
