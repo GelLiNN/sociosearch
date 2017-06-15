@@ -439,12 +439,12 @@ form input:focus {
 }
 
 .image-bg-fluid-height {
-	background: url('http://lorempixel.com/g/1920/500/') no-repeat center center scroll;
+	background: url('/assets/about_bg1.jpeg') no-repeat center center scroll;
     padding: 100px 0;
 }
 
 .image-bg-fixed-height {
-	background: url('http://lorempixel.com/g/1920/500/') no-repeat center center scroll;
+	background: url('/assets/about_bg2.jpg') no-repeat center center scroll;
     height: 450px;
 }
 

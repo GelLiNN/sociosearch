@@ -35,6 +35,7 @@ function sendRequest() {
             target: "#trendsChart",
             x_accessor: "date",
             y_accessor: "value",
+            max_y: 100
         });
 
         var html = "";
