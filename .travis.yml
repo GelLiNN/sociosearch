@@ -5,7 +5,7 @@ node_js:
     - "7"
 
 install:
-    - cd /node-socio-server
+    - cd node-socio-server
     - npm install
 
 script:
