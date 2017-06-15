@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../node-socio-server
+cd node-socio-server
 ./bin/start -test &
 sleep 2
 # Run each test file with given executable if needed
