@@ -10,11 +10,22 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
-
-// Initialize LokiJS Database
 var loki = require('lokijs');
+
+// Test indication variable for server
+var isTestEnv = false;
+if (process.argv.length == 3) {
+    // Store command-line arguments to appropriately load for tests
+    if (process.argv[2] === "-test") {
+        console.log('======================================');
+        console.log('========== TEST ENVIRONMENT ==========');
+        console.log('======================================');
+        isTestEnv = true;
+    }
+}
+
+// Initialize LokiJS Database from file system
 var db = new loki('sociosearch.db');
-// Load the db from file system
 db.loadDatabase({}, function(err) {
     if (err) {
         console.log('error : ' + err);
@@ -29,17 +40,15 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
 
-// view engine setup
+// view engine pubic access setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exhbs({defaultLayout:'layout'}));
 app.set('view engine', 'handlebars');
-
-// uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'assets/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, test_path, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
