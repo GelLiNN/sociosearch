@@ -1,0 +1,12 @@
+# Config File for Travis CI tests
+language: node_js
+
+node_js:
+    - "7"
+
+install:
+    - cd /node-socio-server
+    - npm install
+
+script:
+  - "tests/testRunner.sh"
