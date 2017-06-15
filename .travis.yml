@@ -9,4 +9,4 @@ install:
     - npm install
 
 script:
-  - "tests/testRunner.sh"
+  - "../tests/testRunner.sh"
