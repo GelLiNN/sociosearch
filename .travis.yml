@@ -1,12 +1,17 @@
-# Config File for Travis CI tests
+# Config File for SocioSearch Travis CI tests
 language: node_js
 
+# Using version 7 for SocioSearch
 node_js:
     - "7"
 
+# Step into the directory with package.json
+# Step back into root directory when finished
 install:
     - cd node-socio-server
     - npm install
+    - cd ..
 
+# Location of the main test runner script
 script:
   - "tests/testRunner.sh"
