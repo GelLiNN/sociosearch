@@ -5,8 +5,7 @@ node_js:
     - "7"
 
 install:
-    - cd node-socio-server
     - npm install
 
 script:
-  - "../tests/testRunner.sh"
+  - "tests/testRunner.sh"
