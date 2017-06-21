@@ -139,27 +139,30 @@ function ensureLoggedIn(req, res, next) {
 router.post('/search', function(req, res) {
     console.log('body: ' + JSON.stringify(req.body));
     var query = req.body.search_text;
-    console.log(query);
+    var clientStartTime = req.body.search_start_time;
     // Other filter and request params will be added here
-    // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
 
+    // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
     twitterClient.get('search/tweets',
         {q: query, result_type: 'popular', count: '100'},
         function(error, tweets, response) {
 
-            googleTrends.interestOverTime({keyword: query})
-                .then(function(results){
+            googleTrends.interestOverTime({
+                keyword: query,
+                startTime: new Date(clientStartTime)
+
+            }).then(function(results) {
                     var arr = JSON.parse(results);
+                    console.log(arr);
                     // pass local variables to the view for rendering
                     res.send({
                         tweetsForClient: tweets.statuses,
                         googleTrends: arr.default.timelineData
                     });
-                }).catch(function(err){
+                }).catch(function(err) {
                     console.error(err);
                 });
         });
 });
-
 
 module.exports = router;

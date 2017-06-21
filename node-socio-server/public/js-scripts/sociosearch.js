@@ -1,4 +1,10 @@
-/* Client-side javascript for SocioSearch */
+/* Client-side javascript for SocioSearch
+ * Author: Kellan Nealy
+ */
+
+/* Search variables */
+var searchStart = new Date('2004-01-01');
+var isDayChart = false;
 
 /* On document load update active nav element */
 $(document).ready(function () {
@@ -13,7 +19,12 @@ $(document).ready(function () {
 function sendRequest() {
     var text = $("#search_text").val();
     $("#search-loading").show();
-    var options = JSON.stringify({ search_text: text });
+
+    // Form server request options
+    var options = JSON.stringify({
+        search_text: text,
+        search_start_time: searchStart.toJSON() });
+
     $.ajax({
         type: 'POST',
         data: options,
@@ -24,12 +35,17 @@ function sendRequest() {
         var tweetResults = $('#thumbnail-results');
         var chartData = [];
         $(data.googleTrends).each(function(index, value) {
-            chartData.push({"date": new Date(value.formattedAxisTime), "value": value.formattedValue[0]});
+            if (isDayChart) {
+                chartData.push({"date": new Date(value.time), "value": value.formattedValue[0]});
+            } else {
+                chartData.push({"date": new Date(value.formattedAxisTime), "value": value.formattedValue[0]});
+            }
         });
         MG.data_graphic({
             title: '"' + text + '" Popularity Rankings',
-            description: "Monthly Google Trends rankings from 2004 to Present.",
+            description: "Google Trends Global Rankings",
             data: chartData,
+            show_secondary_x_label: true,
             full_width: true,
             height: 300,
             target: "#trendsChart",
@@ -52,7 +68,43 @@ function sendRequest() {
 /* Support for enter key for searching */
 function inputKeyUp(e) {
     e.which = e.which || e.keyCode;
-    if (e.which == 13) {
+    if (e.which === 13) {
         sendRequest();
+    }
+}
+
+/* Switch active search filter in the search UI*/
+function switchActiveFilter(reference) {
+    if (reference != null) {
+        var newFilter = document.getElementById(reference);
+        var oldFilter = document.getElementById('active_filter');
+        var oldText = oldFilter.innerText;
+        var newText = newFilter.innerText;
+        // Update variable time filter for search, then update
+        updateTimeFilter(newText);
+        oldFilter.innerText = newText;
+        newFilter.innerText = oldText;
+    }
+}
+
+/* Update search variable for time filter with Date objects */
+function updateTimeFilter(filter) {
+    if (filter === "Default Filter") {
+        searchStart = new Date('2004-01-01');
+
+    } else if (filter === "Earliest To Date") {
+        searchStart = new Date('2000-01-01');
+
+    } else if (filter === "One Year") {
+        searchStart = new Date();
+        searchStart.setFullYear(searchStart.getFullYear() - 1);
+
+    } else if (filter === "Six Months") {
+        searchStart = new Date();
+        searchStart.setMonth(searchStart.getMonth() - 6);
+
+    } else if (filter === "Today") {
+        searchStart = new Date();
+        searchStart.setDate(searchStart.getDate() - 1);
     }
 }

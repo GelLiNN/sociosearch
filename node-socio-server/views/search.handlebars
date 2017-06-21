@@ -14,12 +14,12 @@
         <button name="search_button" id="search_button" onclick="sendRequest()"/>
     </li>
     <li id="search_options">
-        <a href="">Filters</a>
+        <a id="active_filter">Default Filter</a>
         <ul class="subnav">
-            <li><a href="">Lorem</a></li>
-            <li><a href="">Ipsum</a></li>
-            <li><a href="">Dolar</a></li>
-            <li><a href="">Bones</a></li>
+            <li><a id="ETD_filter" onclick="switchActiveFilter('ETD_filter')">Earliest To Date</a></li>
+            <li><a id="YTD_filter" onclick="switchActiveFilter('YTD_filter')">One Year</a></li>
+            <li><a id="6MO_filter" onclick="switchActiveFilter('6MO_filter')">Six Months</a></li>
+            <li><a id="Today" onclick="switchActiveFilter('Today')">Today</a></li>
         </ul>
     </li>
 </ul>
