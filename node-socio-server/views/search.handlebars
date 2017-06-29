@@ -7,7 +7,16 @@
         <a href=""><img src="../assets/settings.png" /></a>
     </li>
     <li>
-        <a href="">Search Types</a>
+        <h3>Search Type: </h3>
+    </li>
+    <li id="search_options">
+        <a id="active_type">Things</a>
+        <ul class="subnav">
+            <li><a id="Invest_type" onclick="switchActiveType('Invest_type')">Investments</a></li>
+            <li><a id="RealEstate_type" onclick="switchActiveType('RealEstate_type')">Real-Estate</a></li>
+            <li><a id="People_type" onclick="switchActiveType('People_type')">People</a></li>
+            <li><a id="Locations_type" onclick="switchActiveType('Locations_type')">Locations</a></li>
+        </ul>
     </li>
     <li id="search">
         <input type="text" name="search_text" id="search_text" placeholder="Search" onkeyup="inputKeyUp(event)"/>

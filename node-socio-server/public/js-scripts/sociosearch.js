@@ -5,6 +5,7 @@
 /* Search variables */
 var searchStart = new Date('2004-01-01');
 var isDayChart = false;
+var searchType = "Type:  Things";
 
 /* On document load update active nav element */
 $(document).ready(function () {
@@ -106,5 +107,19 @@ function updateTimeFilter(filter) {
     } else if (filter === "Today") {
         searchStart = new Date();
         searchStart.setDate(searchStart.getDate() - 1);
+    }
+}
+
+/* Switch active search type in the search UI*/
+function switchActiveType(reference) {
+    if (reference != null) {
+        var newType = document.getElementById(reference);
+        var oldType = document.getElementById('active_type');
+        var oldText = oldType.innerText;
+        var newText = newType.innerText;
+        // Update variable search type, this corresponds to ID
+        searchType = newText;
+        oldType.innerText = newText;
+        newType.innerText = oldText;
     }
 }
