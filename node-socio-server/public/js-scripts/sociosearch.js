@@ -5,7 +5,7 @@
 /* Search variables */
 var searchStart = new Date('2004-01-01');
 var isDayChart = false;
-var searchType = "Type:  Things";
+var searchType = "Things"; /* default search type */
 
 /* On document load update active nav element */
 $(document).ready(function () {
@@ -24,6 +24,7 @@ function sendRequest() {
     // Form server request options
     var options = JSON.stringify({
         search_text: text,
+        search_type: searchType,
         search_start_time: searchStart.toJSON() });
 
     $.ajax({
@@ -74,7 +75,7 @@ function inputKeyUp(e) {
     }
 }
 
-/* Switch active search filter in the search UI*/
+/* Switch active search filter in the search UI */
 function switchActiveFilter(reference) {
     if (reference != null) {
         var newFilter = document.getElementById(reference);
@@ -110,7 +111,7 @@ function updateTimeFilter(filter) {
     }
 }
 
-/* Switch active search type in the search UI*/
+/* Switch active search type in the search UI */
 function switchActiveType(reference) {
     if (reference != null) {
         var newType = document.getElementById(reference);

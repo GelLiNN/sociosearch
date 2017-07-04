@@ -135,18 +135,29 @@ function ensureLoggedIn(req, res, next) {
     }
 }
 
-// POST because we will be storing User searches in DB
+/*
+* POST request for searches from the search page
+* Returns JSON to be parsed and displayed by client JS
+*/
 router.post('/search', function(req, res) {
     console.log('body: ' + JSON.stringify(req.body));
+    var type = req.body.search_type;
     var query = req.body.search_text;
     var clientStartTime = req.body.search_start_time;
     // Other filter and request params will be added here
+    if (type === 'Things') {
+        completeThingsSearch(query, clientStartTime, res);
+    }
+});
 
+// Helper function for completing 'Things' Search type
+function completeThingsSearch(query, clientStartTime, res) {
     // Tweet search docs: https://dev.twitter.com/rest/reference/get/search/tweets
     twitterClient.get('search/tweets',
         {q: query, result_type: 'popular', count: '100'},
         function(error, tweets, response) {
 
+            // google-trends-api docs: https://github.com/pat310/google-trends-api
             googleTrends.interestOverTime({
                 keyword: query,
                 startTime: new Date(clientStartTime)
@@ -163,6 +174,6 @@ router.post('/search', function(req, res) {
                     console.error(err);
                 });
         });
-});
+}
 
 module.exports = router;
