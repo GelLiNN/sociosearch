@@ -164,7 +164,6 @@ function completeThingsSearch(query, clientStartTime, res) {
 
             }).then(function(results) {
                     var arr = JSON.parse(results);
-                    console.log(arr);
                     // pass local variables to the view for rendering
                     res.send({
                         tweetsForClient: tweets.statuses,

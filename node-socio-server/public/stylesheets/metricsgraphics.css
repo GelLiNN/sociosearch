@@ -385,7 +385,7 @@ tspan.mg-points-mono {
 }
 
 .mg-year-marker text {
-    fill: black;
+    fill: white;
     font-size: 1.0rem;
     opacity: 0.6;
 }

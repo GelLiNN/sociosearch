@@ -4,7 +4,7 @@
 
 /* Search variables */
 var searchStart = new Date('2004-01-01');
-var isDayChart = false;
+var timeFilter = "Default Filter";
 var searchType = "Things"; /* default search type */
 
 /* On document load update active nav element */
@@ -37,8 +37,8 @@ function sendRequest() {
         var tweetResults = $('#thumbnail-results');
         var chartData = [];
         $(data.googleTrends).each(function(index, value) {
-            if (isDayChart) {
-                chartData.push({"date": new Date(value.time), "value": value.formattedValue[0]});
+            if (timeFilter === "Today") {
+                chartData.push({"date": new Date(value.time * 1000), "value": value.formattedValue[0]});
             } else {
                 chartData.push({"date": new Date(value.formattedAxisTime), "value": value.formattedValue[0]});
             }
@@ -109,6 +109,7 @@ function updateTimeFilter(filter) {
         searchStart = new Date();
         searchStart.setDate(searchStart.getDate() - 1);
     }
+    timeFilter = filter;
 }
 
 /* Switch active search type in the search UI */
