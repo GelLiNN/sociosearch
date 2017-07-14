@@ -34,36 +34,43 @@ function sendRequest() {
         url: "/users/search"
     }).done(function(data) {
         $("#search-loading").hide();
-        var tweetResults = $('#thumbnail-results');
-        var chartData = [];
-        $(data.googleTrends).each(function(index, value) {
-            if (timeFilter === "Today") {
-                chartData.push({"date": new Date(value.time * 1000), "value": value.formattedValue[0]});
-            } else {
-                chartData.push({"date": new Date(value.formattedAxisTime), "value": value.formattedValue[0]});
-            }
-        });
-        MG.data_graphic({
-            title: '"' + text + '" Popularity Rankings',
-            description: "Google Trends Global Rankings",
-            data: chartData,
-            show_secondary_x_label: true,
-            full_width: true,
-            height: 300,
-            target: "#trendsChart",
-            x_accessor: "date",
-            y_accessor: "value",
-            max_y: 100
-        });
 
-        var html = "";
-        var tweets = data.tweetsForClient;
-        $(tweets).each(function(index, value) {
-            html += "<div class='col-md-3' id='search-result'><h2>" +
-            value.user.name + "</h2><p>" + value.text +
-            "</p><p><a class='btn btn-primary' href='' role='button'>View details &raquo;</a></p></div>";
-        });
-        tweetResults.html(html);
+        if (data.quotesForClient) {
+            $(data.googleTrends).each(function(index, value) {
+                console.log(data.quotesForClient[0]);
+            });
+        } else if (data.googleTrends) {
+            var chartData = [];
+            $(data.googleTrends).each(function(index, value) {
+                if (timeFilter === "Today") {
+                    chartData.push({"date": new Date(value.time * 1000), "value": value.formattedValue[0]});
+                } else {
+                    chartData.push({"date": new Date(value.formattedAxisTime), "value": value.formattedValue[0]});
+                }
+            });
+            MG.data_graphic({
+                title: '"' + text + '" Popularity Rankings',
+                description: "Google Trends Global Rankings",
+                data: chartData,
+                show_secondary_x_label: true,
+                full_width: true,
+                height: 300,
+                target: "#trendsChart",
+                x_accessor: "date",
+                y_accessor: "value",
+                max_y: 100
+            });
+
+            var tweetResults = $('#thumbnail-results');
+            var html = "";
+            var tweets = data.tweetsForClient;
+            $(tweets).each(function(index, value) {
+                html += "<div class='col-md-3' id='search-result'><h2>" +
+                value.user.name + "</h2><p>" + value.text +
+                "</p><p><a class='btn btn-primary' href='' role='button'>View details &raquo;</a></p></div>";
+            });
+            tweetResults.html(html);
+        }
     });
 }
 

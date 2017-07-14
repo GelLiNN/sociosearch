@@ -24,7 +24,8 @@
         "passport-http": "*",
         "passport-local": "*",
         "twitter": "*",
-        "google-trends-api": "*"
+        "google-trends-api": "*",
+        "yahoo-finance": "*"
     },
     "devDependencies": {
         "jshint": "^2.6.0",

@@ -10,6 +10,7 @@ var User = require('../models/user');
 var Twitter = null;
 var twitterClient = null;
 var googleTrends = require('google-trends-api');
+var yahooFinance = require('yahoo-finance');
 
 /*
 * About Routes
@@ -147,6 +148,8 @@ router.post('/search', function(req, res) {
     // Other filter and request params will be added here
     if (type === 'Things') {
         completeThingsSearch(query, clientStartTime, res);
+    } else if (type === 'Investments') {
+        completeInvestmentsSearch(query, clientStartTime, res);
     }
 });
 
@@ -174,5 +177,62 @@ function completeThingsSearch(query, clientStartTime, res) {
                 });
         });
 }
+
+/*
+* POST request for searches from the search page
+* Returns JSON to be parsed and displayed by client JS
+*/
+router.post('/search', function(req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    var type = req.body.search_type;
+    var query = req.body.search_text;
+    var clientStartTime = req.body.search_start_time;
+    // Other filter and request params will be added here
+    if (type === 'Things') {
+        completeThingsSearch(query, clientStartTime, res);
+    } else if (type === 'Investments') {
+        completeInvestmentSearch(query, clientStartTime, res);
+    }
+});
+
+// Helper function for completing 'Investments' Search type
+function completeInvestmentsSearch(query, clientStartTime, res) {
+    var SYMBOL = query;
+    var startDate = formatDateYahoo(clientStartTime);
+    var endDate = formatDateYahoo(new Date());
+
+    yahooFinance.historical({
+        symbol: SYMBOL,
+        from: startDate,
+        to: endDate,
+        period: 'd'
+    }, function (err, quotes) {
+        if (err) { throw err; }
+
+        if (quotes[0]) {
+            console.log(JSON.stringify(quotes));
+            // pass local variables to the view for rendering
+            res.send({
+                quotesForClient: quotes,
+                relatedSymbols: {}
+            });
+        } else {
+            console.log('No results found for ' + query + ' Investments search');
+        }
+    });
+}
+
+function formatDateYahoo(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 
 module.exports = router;
