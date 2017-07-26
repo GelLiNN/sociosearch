@@ -1,4 +1,4 @@
-<h2 class="page-header">Register</h2>
+<h2 class="page-header">Create Your Account Today!</h2>
 <!-- Error print logic for registration errors -->
 {{#if errors}}
     {{#each errors}}
@@ -6,26 +6,49 @@
     {{/each}}
 {{/if}}
 
+<!-- CAPTCHA VALIDATION -->
+<table>
+    <tr>
+        <td>
+            <label>Text CAPTCHA</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" class="form-control" id="mainCaptcha" />
+        </td>
+        <td>
+            <input type="button" class="btn btn-default" id="refreshCaptcha" value="Refresh" onclick="Captcha();" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" class="form-control" id="txtInput"/>
+        </td>
+        <td>
+            <input id="checkCaptcha" type="button" class="btn btn-default" value="Check" onclick="alert(ValidCaptcha());"/>
+        </td>
+    </tr>
+</table>
+<br />
+
+<!-- REGISTRATION FORM -->
 <form method="post" action="/users/register">
     <div class"form-group">
         <label>Name</label>
-        <input type="text" class="form-control" placeholder="Name"
-        name="name">
+        <input type="text" class="form-control" disabled="true" placeholder="Name" name="name">
     </div>
     <div class"form-group">
         <label>Email</label>
-        <input type="email" class="form-control" placeholder="Email"
-        name="email">
+        <input type="email" class="form-control" disabled="true" placeholder="Email" name="email">
     </div>
     <div class"form-group">
         <label>Password</label>
-        <input type="password" class="form-control" placeholder="Password"
-        name="password">
+        <input type="password" class="form-control" disabled="true" placeholder="Password" name="password">
     </div>
     <div class"form-group">
         <label>Confirm Password</label>
-        <input type="password" class="form-control" placeholder="Password"
-        name="password2">
+        <input type="password" class="form-control" disabled="true" placeholder="Password" name="password2">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button id="registerSubmit" type="submit" class="btn btn-default" disabled="true">Submit</button>
 </form>
