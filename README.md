@@ -1,7 +1,7 @@
 # SocioSearch Express NodeJS Server
 
 Web Service to provide easy access to public API insights from Twitter, Google, Yahoo Finance, and more:
-[Check It Out!](http://www.sociosearch.com)
+**[Check It Out!](http://www.sociosearch.com)**
 
 # Build & Run
 **Prerequisites: Node & NPM most recent versions installed**
@@ -10,7 +10,7 @@ Web Service to provide easy access to public API insights from Twitter, Google, 
  * From your command line, get into the Server root directory:
 
  		`cd node-socio-server`
- * In project root directory, install necessary dependencies:
+ * In Server root directory, install necessary dependencies:
 
  		`npm install`
  * Run the server:
@@ -18,4 +18,4 @@ Web Service to provide easy access to public API insights from Twitter, Google, 
  		`./bin/start`
  * **Note** the port number logged (i.e. 3000), and visit via browser:
 
-	    `http://localhost:<insert_port_here>/`
+	    `http://localhost:<insert_port_here>`
