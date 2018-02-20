@@ -291,6 +291,12 @@ form input:focus {
     line-height: 24px;
 }
 
+#search_type_label {
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 #search {
     width: 357px;
     margin: 4px;

@@ -10,8 +10,8 @@ var http = require('http');
 
 console.log('Attempting to start Express node server...');
 
-// Use port 3000 for Express.
-var port = '3000';
+// Use port 9999 for Express.
+var port = '9999';
 app.set('port', port);
 
 // Create HTTP server.
