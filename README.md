@@ -6,7 +6,7 @@ Web Service to provide easy access to public API insights from Twitter, Google, 
 # Build & Run
 **Prerequisites: Node & NPM most recent versions installed**
  * [Install Node and NPM](https://nodejs.org/en/download/)
- * Clone this repo to your machine, https should be fine.
+ * Clone this repo to your machine.
  * From your command line, get into the Server root directory:
 
  		`cd node-socio-server`
