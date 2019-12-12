@@ -15,7 +15,7 @@
         "express-session": "*",
         "express-validator": "*",
         "express-handlebars": "*",
-        "morgan": "~1.8.1",
+        "morgan": "~1.9.1",
         "serve-favicon": "~2.4.2",
         "forever": "~0.15.3",
         "lokijs": "*",
