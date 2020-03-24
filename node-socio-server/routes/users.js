@@ -149,6 +149,8 @@ router.post('/search', function(req, res) {
         completeThingsSearch(query, clientStartTime, res);
     } else if (type === 'Investments') {
         completeInvestmentsSearch(query, clientStartTime, res);
+    } else {
+        searchNotImplemented(query, clientStartTime, res);
     }
 });
 
@@ -176,23 +178,6 @@ function completeThingsSearch(query, clientStartTime, res) {
                 });
         });
 }
-
-/*
-* POST request for searches from the search page
-* Returns JSON to be parsed and displayed by client JS
-*/
-router.post('/search', function(req, res) {
-    console.log('body: ' + JSON.stringify(req.body));
-    var type = req.body.search_type;
-    var query = req.body.search_text;
-    var clientStartTime = req.body.search_start_time;
-    // Other filter and request params will be added here
-    if (type === 'Things') {
-        completeThingsSearch(query, clientStartTime, res);
-    } else if (type === 'Investments') {
-        completeInvestmentSearch(query, clientStartTime, res);
-    }
-});
 
 // Helper function for completing 'Investments' Search type
 function completeInvestmentsSearch(query, clientStartTime, res) {
@@ -233,5 +218,14 @@ function formatDateYahoo(date) {
     return [year, month, day].join('-');
 }
 
+// Helper function for completing searches that are broken or not implemented
+function searchNotImplemented(query, startTime, res) {
+    console.log("Search not yet implemented!");
+    // pass local variables to the view for rendering
+    res.send({
+        clientQuery: query,
+        clientStartTime: startTime
+    });
+}
 
 module.exports = router;

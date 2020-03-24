@@ -61,7 +61,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Express Validator
+/* Express Validator
 app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
         var namespace = param.split('.')
@@ -77,7 +77,7 @@ app.use(expressValidator({
             value : value
         };
     }
-}));
+}));*/
 
 // Connect Flash and global vars for flash messages
 app.use(flash());

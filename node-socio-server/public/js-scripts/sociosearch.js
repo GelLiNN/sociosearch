@@ -38,7 +38,6 @@ function sendRequest() {
 
         if (data.quotesForClient) {
             printInvestmentsChart(queryText, data);
-
         } else if (data.googleTrends) {
             printThingsChart(queryText, data);
 
@@ -51,6 +50,10 @@ function sendRequest() {
                 "</p><p><a class='btn btn-primary' href='' role='button'>View details &raquo;</a></p></div>";
             });
             tweetResults.html(html);
+        } else {
+            var errorResults = $('#thumbnail-results');
+            var html = "<div class='alert ss-alert alert-danger'>" + data.clientQuery + " Search Not Implemented!</div>";
+            errorResults.html(html);
         }
     });
 }

@@ -3,37 +3,33 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "node ./bin/start"
+        "test": "./node_modules/phantomjs/bin/phantomjs tests/console-errors-test.js"
     },
     "dependencies": {
-        "body-parser": "~1.17.1",
+        "bcryptjs": "*",
+        "body-parser": "^1.19.0",
+        "connect-flash": "*",
         "cookie-parser": "~1.4.3",
         "debug": "~2.6.3",
-        "express": "~4.15.2",
-        "connect-flash": "*",
+        "express": "^4.17.1",
+        "express-handlebars": "*",
         "express-messages": "*",
         "express-session": "*",
         "express-validator": "*",
-        "express-handlebars": "*",
-        "morgan": "~1.8.1",
-        "serve-favicon": "~2.4.2",
         "forever": "~0.15.3",
+        "google-trends-api": "*",
         "lokijs": "*",
-        "bcryptjs": "*",
+        "morgan": "^1.10.0",
         "passport": "*",
         "passport-http": "*",
         "passport-local": "*",
+        "serve-favicon": "~2.4.2",
         "twitter": "*",
-        "google-trends-api": "*",
         "yahoo-finance": "*"
     },
     "devDependencies": {
         "jshint": "^2.6.0",
         "phantomjs": "^2.1.7"
-    },
-    "scripts": {
-        "test": "./node_modules/jshint/bin/jshint tests/dummyTest.js",
-        "test": "./node_modules/phantomjs/bin/phantomjs tests/console-errors-test.js"
     },
     "repository": {
         "type": "git",

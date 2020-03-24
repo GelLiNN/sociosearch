@@ -386,6 +386,10 @@ form input:focus {
     opacity: 1;
 }
 
+.ss-alert {
+  margin: 10px;
+}
+
 /* Loading */
 .load-bar {
   display: none;
@@ -494,6 +498,7 @@ footer {
 * Bootstrap Modifications
 */
 #main-content {
+    border-radius: 3px;
     background-color: #e3e7ed;
     box-shadow: 0px 0px 15px black;
     padding-bottom: 15px;
